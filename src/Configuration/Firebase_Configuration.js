@@ -8,6 +8,7 @@ import { initializeApp } from "firebase/app";
 const firebaseConfig = {
   apiKey: "AIzaSyDlIUbTHMDyIeiFkfF5TwU38tl1Xz57RE4",
   authDomain: "fir-test-644c3.firebaseapp.com",
+  databaseURL: "https://fir-test-644c3-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "fir-test-644c3",
   storageBucket: "fir-test-644c3.appspot.com",
   messagingSenderId: "747871511572",

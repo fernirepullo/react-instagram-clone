@@ -2,11 +2,25 @@ import React from 'react'
 //import Firebase_Login from '../Configuration/Firebase_Login';
 import Box from '@mui/material/Box'
 import { Button, TextField } from '@mui/material';
+import Login_Image from '../Images/login_telefonos.png';
 
 const Login = () => {
     return (
 
-        <div id = "login-div">
+        <div className="login-div">
+            
+            <div className ="login__img">
+
+            <img
+            
+            className ="login__img"
+            src={Login_Image}
+            alt="login_telefonos"
+        
+            />
+
+            </div>
+            
             <Box 
             component = "form"
             sx={{

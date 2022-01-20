@@ -2,7 +2,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import app from "./Firebase_Configuration";
 
 const auth = getAuth();
-createUserWithEmailAndPassword(auth, email, password)
+createUserWithEmailAndPassword(auth, "prueba@prueba.es", "prueba123")
   .then((userCredential) => {
     // Signed in
     const user = userCredential.user;
@@ -13,3 +13,4 @@ createUserWithEmailAndPassword(auth, email, password)
     const errorMessage = error.message;
     // ..
   });
+
