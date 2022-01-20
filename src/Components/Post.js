@@ -1,12 +1,24 @@
+import { Avatar } from '@mui/material';
 import React from 'react';
 import Image from '../Images/img1.jpg'
+import '../CSS/Post.css'
 
 const Post = () => {
-  return <div>
+  return <div className="post">
 
-    <h3>Username</h3>
+    <div className="post__header">
 
-      <img className="post_imagen" src={Image}></img>
+        <Avatar
+            className="post__avatar"
+            alt="prueba"
+            src={Image}
+        />
+
+        <h3>Prueba</h3>
+    </div>
+
+
+
   </div>;
 };
 

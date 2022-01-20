@@ -1,52 +1,76 @@
 import React from 'react'
 //import Firebase_Login from '../Configuration/Firebase_Login';
-import Box from '@mui/material/Box'
-import { Button, TextField } from '@mui/material';
-import Login_Image from '../Images/login_telefonos.png';
+import '../CSS/Login.css'
+import Footer from './Footer'
 
 const Login = () => {
     return (
 
-        <div className="login-div">
-            
-            <div className ="login__img">
+        <div id="wrapper">
 
-            <img
-            
-            className ="login__img"
-            src={Login_Image}
-            alt="login_telefonos"
-        
-            />
+            <div className="container">
+
+                <div className="phone-app-demo" />
+                <div className="form-data">
+
+                    <form action="">
+                        <div className="logo">
+                            <h1>Instagram</h1>
+                        </div>
+
+                        <input
+                            type="text"
+                            placeholder="Usuario"
+                        />
+
+                        <input type="password" placeholder="Contraseña" />
+
+                        <button className="form-btn" type="submit">
+                            Iniciar Sesi&oacute;n
+                        </button>
+
+                        <span className="has-separator">O</span>
+
+                        <a href="#" className="facebook-login">
+                            <i className="fab fa-facebook" /> Iniciar sesi&oacute;n con Facebook
+                        </a>
+
+                        <a className="password-reset" href="#">
+                            ¿Olvidó la contrase&ntilde;a?
+                        </a>
+
+                    </form>
+
+                    <div className="sign-up">
+                        <a href="#">Crear cuenta</a>
+                    </div>
+
+                    <div className="get-the-app">
+                        
+                        <span>APP disponible en</span>
+
+                        <div className="badge">
+
+                            <img
+                                src="https://www.instagram.com/static/images/appstore-install-badges/badge_android_english-en.png/e9cd846dc748.png"
+                                alt="android App"
+                            />
+
+                            <img
+                                src="https://www.instagram.com/static/images/appstore-install-badges/badge_ios_english-en.png/180ae7a0bcf7.png"
+                                alt="ios app"
+                            />
+
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
             
-            <Box 
-            component = "form"
-            sx={{
-                '& .MuiTextField-root': {m: 1, width: '25ch'},
-            }}
-            noValidate
-            autoComplete = "off">
+            <Footer></Footer>
 
-                <TextField
-                    required
-                    id="outlined-required"
-                    label="Required"
-                    defaultValue=""
-                    placeholder="Introduzca el usuario"/>
-                
-                <TextField
-                    required
-                    id="outlined-password-input"
-                    label="Contraseña"
-                    type="password"
-                    autoComplete="current-password"/>
-
-            </Box>
-
-            <Button id="login-button" variant="contained" href="#">Iniciar Sesi&oacute;n</Button>
-            
         </div>
     )
 }

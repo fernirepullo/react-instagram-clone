@@ -1,5 +1,14 @@
-.post_imagen{
+.post_image{
 
     width: 100%;
     object-fit: contain;
+}
+
+.post__text{
+    font-weight: normal;
+}
+
+.post__header{
+    display: flex;
+    align-items: center;
 }

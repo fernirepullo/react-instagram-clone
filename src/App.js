@@ -135,7 +135,6 @@ function App() {
     return (
       <div className="App">
         <Login></Login>
-        <Post></Post>
 
       </div>
     );
