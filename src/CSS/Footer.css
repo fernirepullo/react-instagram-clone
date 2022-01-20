@@ -1,0 +1,32 @@
+/*Footer link styling*/
+footer {
+    padding: 5rem 0;
+  }
+  
+  footer .container {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    flex-wrap: wrap;
+    margin-top: 0;
+  }
+  
+  .footer-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+  }
+  
+  .footer-nav ul li {
+    margin-right: 1.6rem;
+  }
+  
+  .footer-nav ul li a {
+    color: #003569;
+  }
+  
+  .copyright-notice {
+    color: #999999;
+  }
