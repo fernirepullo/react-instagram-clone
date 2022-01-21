@@ -1,8 +1,6 @@
 import './App.css';
-import { useEffect, useState } from 'react';
-import { baseDatos } from "./Configuration/Firebase_Configuration";
-import Post from './Components/Post';
 import Login from './Components/Login.js'
+import Feed from './Components/Feed';
 
 //CREAR USUARIO
 //import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
@@ -19,26 +17,6 @@ import Login from './Components/Login.js'
 
 
 function App() {
-
-  const [posts, setPosts] = useState([]);
-
-useEffect(() => {
-
-  baseDatos.collection('Posts').onSnapshot(snapshot =>{
-
-  //   setPosts(snapshot.docs.map(doc => doc.data()));
-  // });
-
-    setPosts(snapshot.docs.map(doc => ({
-
-      id: doc.id,
-      post: doc.data()
-    })));
-
-  })
-
-}, []);
-
 
   //CREAR USUARIO
 
@@ -156,19 +134,7 @@ useEffect(() => {
     return (
       <div className="App">
 
-        {
-          // posts.map(post =>(
-          //   <Post usuario={post.usuario} textoPost={post.textoPost} imagen={post.imagenUrl}/>
-          // ))
-
-          posts.map(({id, post}) =>(
-            <Post key={id} usuario={post.usuario} textoPost={post.textoPost} imagenUrl={post.imagenUrl}/>
-
-          ))
-
-          //<Login></Login>
-
-        }
+        <Feed/>
       </div>
     );
 }
