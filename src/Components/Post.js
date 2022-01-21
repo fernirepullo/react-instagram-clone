@@ -1,9 +1,8 @@
 import { Avatar } from '@mui/material';
 import React from 'react';
-import Image from '../Images/img1.jpg'
 import '../CSS/Post.css'
 
-const Post = ({ usuario, textoPost, imagenUrl }) => {
+const Post = ({ usuario, textoPost, imagenUrl, imagenAvatar }) => {
   return <>
     <div className="post">
 
@@ -12,11 +11,10 @@ const Post = ({ usuario, textoPost, imagenUrl }) => {
         <Avatar
           className="post__avatar"
           alt="prueba"
-          src={Image}
+          src={imagenAvatar}
         />
 
         <h3>{usuario}</h3>
-        <h2></h2>
 
       </div>
 
