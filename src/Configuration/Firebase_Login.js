@@ -2,7 +2,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import app from "./Firebase_Configuration";
 
 const auth = getAuth();
-signInWithEmailAndPassword(auth, email, password)
+signInWithEmailAndPassword(auth, {email, password})
   .then((userCredential) => {
     // Signed in
     const user = userCredential.user;
