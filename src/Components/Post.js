@@ -16,6 +16,7 @@ const Post = ({ usuario, textoPost, imagenUrl }) => {
         />
 
         <h3>{usuario}</h3>
+        <h2></h2>
 
       </div>
 
