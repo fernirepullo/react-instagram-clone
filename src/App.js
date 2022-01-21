@@ -1,5 +1,8 @@
 import './App.css';
-import Login from './Components/Login';
+import { useEffect, useState } from 'react';
+import { baseDatos } from "./Configuration/Firebase_Configuration";
+import Post from './Components/Post';
+import Login from './Components/Login.js'
 
 //CREAR USUARIO
 //import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
@@ -7,17 +10,35 @@ import Login from './Components/Login';
 
 //LOGUEARSE USUARIO
 //import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import app from "../src/Configuration/Firebase_Configuration";
 
 //REGISTRO CON GOOGLE
 //import { getAuth, signInWithPopup, getRedirectResult, GoogleAuthProvider } from "firebase/auth";
 
 //LEER BASE DE DATOS
-import { getDatabase, ref, child, get } from "firebase/database";
-import Post from './Components/Post';
+
 
 
 function App() {
+
+  const [posts, setPosts] = useState([]);
+
+useEffect(() => {
+
+  baseDatos.collection('Posts').onSnapshot(snapshot =>{
+
+  //   setPosts(snapshot.docs.map(doc => doc.data()));
+  // });
+
+    setPosts(snapshot.docs.map(doc => ({
+
+      id: doc.id,
+      post: doc.data()
+    })));
+
+  })
+
+}, []);
+
 
   //CREAR USUARIO
 
@@ -134,8 +155,20 @@ function App() {
 
     return (
       <div className="App">
-        <Login></Login>
 
+        {
+          // posts.map(post =>(
+          //   <Post usuario={post.usuario} textoPost={post.textoPost} imagen={post.imagenUrl}/>
+          // ))
+
+          posts.map(({id, post}) =>(
+            <Post key={id} usuario={post.usuario} textoPost={post.textoPost} imagenUrl={post.imagenUrl}/>
+
+          ))
+
+          //<Login></Login>
+
+        }
       </div>
     );
 }
