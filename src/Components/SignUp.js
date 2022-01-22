@@ -1,93 +1,46 @@
-//CREAR USUARIO
-//import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-//import app from "../src/Configuration/Firebase_Configuration";
-
-//REGISTRO CON GOOGLE
-//import { getAuth, signInWithPopup, getRedirectResult, GoogleAuthProvider } from "firebase/auth";
-
-import React from 'react';
+import React, { useState } from 'react';
 import Footer from './Footer';
 
-//REGISTRO CON GOOGLE
-  // const provider = new GoogleAuthProvider();
-  //signInWithPopup(auth, provider)
+//CREAR USUARIO
 
-  //   .then((result) => {
-  //     // This gives you a Google Access Token. You can use it to access the Google API.
-  //     const credential = GoogleAuthProvider.credentialFromResult(result);
-  //     const token = credential.accessToken;
-  //     // The signed-in user info.
-  //     const user = result.user;
-  //     // ...
-  //   }).catch((error) => {
-  //     // Handle Errors here.
-  //     const errorCode = error.code;
-  //     const errorMessage = error.message;
-  //     // The email of the user's account used.
-  //     const email = error.email;
-  //     // The AuthCredential type that was used.
-  //     const credential = GoogleAuthProvider.credentialFromError(error);
-  //     // ...
-  //   });
-  // const auth = getAuth();
-  // signInWithPopup(auth, provider)
-
-  //   .then((result) => {
-  //     // This gives you a Google Access Token. You can use it to access the Google API.
-  //     const credential = GoogleAuthProvider.credentialFromResult(result);
-  //     const token = credential.accessToken;
-  //     // The signed-in user info.
-  //     const user = result.user;
-  //     // ...
-  //   }).catch((error) => {
-  //     // Handle Errors here.
-  //     const errorCode = error.code;
-  //     const errorMessage = error.message;
-  //     // The email of the user's account used.
-  //     const email = error.email;
-  //     // The AuthCredential type that was used.
-  //     const credential = GoogleAuthProvider.credentialFromError(error);
-  //     // ...
-  //   });
-
-  // getRedirectResult(auth)
-  //   .then((result) => {
-  //     // This gives you a Google Access Token. You can use it to access Google APIs.
-  //     const credential = GoogleAuthProvider.credentialFromResult(result);
-  //     const token = credential.accessToken;
-
-  //     // The signed-in user info.
-  //     const user = result.user;
-  //   }).catch((error) => {
-  //     // Handle Errors here.
-  //     const errorCode = error.code;
-  //     const errorMessage = error.message;
-  //     // The email of the user's account used.
-  //     const email = error.email;
-  //     // The AuthCredential type that was used.
-  //     const credential = GoogleAuthProvider.credentialFromError(error);
-  //     // ...
-  //   });
-
-
-  //CREAR USUARIO
-
-  // const auth = getAuth();
-  // createUserWithEmailAndPassword(auth, "prueba@prueba.es", "prueba123")
-  //   .then((userCredential) => {
-  //     // Signed in
-  //     const user = userCredential.user;
-  //     // ...
-  //   })
-  //   .catch((error) => {
-  //     const errorCode = error.code;
-  //     const errorMessage = error.message;
-  //     // ..
-  //   });
-
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../Configuration/Firebase_Configuration";
 
 
 const Register = () => {
+
+    //CREAR USUARIO
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+
+    const signUp = (event) => {
+
+        event.preventDefault();
+
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in
+                const user = userCredential.user;
+
+                alert(`Bienvenido, ${userCredential.user.email}`);
+                console.log(user);
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode);
+                console.log(errorMessage);
+                // ..
+            });
+
+
+        auth.createUserWithEmailAndPassword(email, password)
+            
+            .catch((error) => alert(error.message));
+    }
+
     return <>
         <div id="wrapper">
 
@@ -97,19 +50,26 @@ const Register = () => {
                 <div className="form-data">
 
                     <form action="">
-                        
+
                         <div className="logo">
                             <h1>Fernigram</h1>
                         </div>
 
                         <input
                             type="text"
-                            placeholder="Usuario"
+                            placeholder="Correo Electr&oacute;nico"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
 
-                        <input type="password" placeholder="Contraseña" />
+                        <input
+                            type="password"
+                            placeholder="Contraseña"
+                            value={password}
+                            onChange={(p) => setPassword(p.target.value)}
+                        />
 
-                        <button className="form-btn" type="submit">
+                        <button className="form-btn" type="submit" onClick={signUp}>
                             Registrar usuario
                         </button>
 
@@ -119,7 +79,7 @@ const Register = () => {
 
             </div>
 
-            <Footer/>
+            <Footer />
 
         </div>
 

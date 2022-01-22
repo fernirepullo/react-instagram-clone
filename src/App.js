@@ -4,11 +4,6 @@ import Feed from './Components/Feed';
 import SignUp from './Components/SignUp';
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 
-//LOGUEARSE USUARIO
-//import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-
-
-
 function App() {
 
   return (

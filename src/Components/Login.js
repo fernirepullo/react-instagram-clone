@@ -1,27 +1,51 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../CSS/Login.css'
 import Footer from './Footer'
 
-  //LOGUEARSE
+//REGISTRO USUARIO
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../Configuration/Firebase_Configuration";
 
-  // const auth = getAuth();
-  // signInWithEmailAndPassword(auth, "prueba@prueba.es", "prueba123")
-  //   .then((userCredential) => {
-  //     // Signed in
-  //     const user = userCredential.user;
-  //     console.log(user);
-  //     // ...
-  //   })
-  //   .catch((error) => {
-  //     const errorCode = error.code;
-  //     const errorMessage = error.message;
-  //     console.log(errorCode);
-  //   });
-
-  // }
-
+//REGISTRO CON GOOGLE
+//import { getAuth, signInWithPopup, getRedirectResult, GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
+
+    //LOGIN CON CORREO
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [user, setUser] = useState(null); 
+
+    
+    
+    const login = (event) =>{
+
+        event.preventDefault();
+
+        signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in
+
+            setUser(userCredential.user);
+
+            alert(`Bienvenido, ${userCredential.user.email}`);
+            console.log(user);
+            
+        })
+        .catch((error) => {
+
+            const errorCode = error.code;
+            const errorMessage = error.message;
+
+            console.log(errorCode);
+            console.log(errorMessage);
+        });
+
+        auth.signInWithEmailAndPassword(email, password)
+            .catch((error) => alert(error.message));
+
+    }
+
     return (
 
         <div id="wrapper">
@@ -38,12 +62,19 @@ const Login = () => {
 
                         <input
                             type="text"
-                            placeholder="Usuario"
+                            placeholder="Correo Electr&oacute;nico"
+                            value={email}
+
+                            onChange={(e) => setEmail(e.target.value)}
                         />
 
-                        <input type="password" placeholder="Contraseña" />
+                        <input type="password"
+                            placeholder="Contraseña"
+                            value={password}
+                            onChange={(p) => setPassword(p.target.value)}
+                        />
 
-                        <button className="form-btn" type="submit">
+                        <button className="form-btn" type="submit" onClick={login}>
                             Iniciar Sesi&oacute;n
                         </button>
 
@@ -60,11 +91,11 @@ const Login = () => {
                     </form>
 
                     <div className="sign-up">
-                        <a href="#">Crear cuenta</a>
+                        <a href="/signup">Crear cuenta</a>
                     </div>
 
                     <div className="get-the-app">
-                        
+
                         <span>APP disponible en</span>
 
                         <div className="badge">
@@ -86,8 +117,8 @@ const Login = () => {
                 </div>
 
             </div>
-            
-            <Footer/>
+
+            <Footer />
 
         </div>
     )
