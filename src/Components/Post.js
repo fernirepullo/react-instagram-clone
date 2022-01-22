@@ -22,7 +22,7 @@ const Post = ({ usuario, textoPost, imagenUrl, imagenAvatar }) => {
 
       <h3 className="post__texto"> <strong>{usuario} </strong> {textoPost}</h3>
 
-    </div>;
+    </div>
 
   </>
 

@@ -1,7 +1,25 @@
 import React from 'react'
-//import Firebase_Login from '../Configuration/Firebase_Login';
 import '../CSS/Login.css'
 import Footer from './Footer'
+
+  //LOGUEARSE
+
+  // const auth = getAuth();
+  // signInWithEmailAndPassword(auth, "prueba@prueba.es", "prueba123")
+  //   .then((userCredential) => {
+  //     // Signed in
+  //     const user = userCredential.user;
+  //     console.log(user);
+  //     // ...
+  //   })
+  //   .catch((error) => {
+  //     const errorCode = error.code;
+  //     const errorMessage = error.message;
+  //     console.log(errorCode);
+  //   });
+
+  // }
+
 
 const Login = () => {
     return (
@@ -15,7 +33,7 @@ const Login = () => {
 
                     <form action="">
                         <div className="logo">
-                            <h1>Instagram</h1>
+                            <h1>Fernigram</h1>
                         </div>
 
                         <input
@@ -32,7 +50,7 @@ const Login = () => {
                         <span className="has-separator">O</span>
 
                         <a href="#" className="facebook-login">
-                            <i className="fab fa-facebook" /> Iniciar sesi&oacute;n con Facebook
+                            <i className="fab fa-facebook" /> Iniciar sesi&oacute;n con Google
                         </a>
 
                         <a className="password-reset" href="#">
