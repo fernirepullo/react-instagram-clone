@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Footer from './Footer';
+import { useNavigate } from 'react-router';
 
 //CREAR USUARIO
 
@@ -9,43 +10,38 @@ import { auth } from "../Configuration/Firebase_Configuration";
 
 const Register = () => {
 
+    let navigate = useNavigate();
+
     //CREAR USUARIO
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
 
-    // const signUp = (event) => {
-
-    //     event.preventDefault();
-
-    //     createUserWithEmailAndPassword(auth, email, password)
-    //         .then((userCredential) => {
-    //             // Signed in
-    //             const user = userCredential.user;
-
-    //             alert(`Bienvenido, ${userCredential.user.email}`);
-    //             console.log(user);
-    //             // ...
-    //         })
-    //         .catch((error) => {
-    //             const errorCode = error.code;
-    //             const errorMessage = error.message;
-    //             console.log(errorCode);
-    //             console.log(errorMessage);
-    //             // ..
-    //         });
-
-
-    //     auth.createUserWithEmailAndPassword(email, password)
-            
-    //         .catch((error) => alert(error.message));
-    // }
-
-    const signUp = (path, event) =>{
+    const signUp = (event) => {
 
         event.preventDefault();
 
-        this.props.history.push(path);
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in
+                const user = userCredential.user;
+
+                alert(`Bienvenido, ${userCredential.user.email}`);
+                console.log(user);
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode);
+                console.log(errorMessage);
+                // ..
+            });
+
+
+        auth.createUserWithEmailAndPassword(email, password)
+            .then(navigate('/login'))
+            .catch((error) => alert(error.message));
     }
 
     return <>
@@ -76,14 +72,15 @@ const Register = () => {
                             onChange={(p) => setPassword(p.target.value)}
                         />
 
-                        <button className="form-btn" type="submit" 
-                        //onClick={signUp}
-                        onClick={() => this.signUp('/feed')}
-                        >
-                            Registrar usuario
-                        </button>
+                        <button
+                        className="form-btn"
+                        type="submit"
+                        onClick={signUp()}>
 
-                    </form>
+                        Registrar usuario
+                    </button>
+
+                    </form>                  
 
                 </div>
 

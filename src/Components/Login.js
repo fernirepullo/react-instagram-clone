@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import '../CSS/Login.css'
 import Footer from './Footer'
+import { useNavigate } from 'react-router';
 
 //REGISTRO USUARIO
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -10,6 +11,8 @@ import { auth } from "../Configuration/Firebase_Configuration";
 //import { getAuth, signInWithPopup, getRedirectResult, GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
+
+    let navigate = useNavigate();
 
     //LOGIN CON CORREO
     const [email, setEmail] = useState('');
@@ -25,8 +28,6 @@ const Login = () => {
             // Signed in
 
             setUser(userCredential.user);
-
-            alert(`Bienvenido, ${userCredential.user.email}`);
             console.log(user);
             
         })
@@ -40,6 +41,7 @@ const Login = () => {
         });
 
         auth.signInWithEmailAndPassword(email, password)
+            .then(navigate('/feed'))
             .catch((error) => alert(error.message));
 
     }
