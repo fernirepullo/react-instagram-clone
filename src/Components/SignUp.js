@@ -14,31 +14,38 @@ const Register = () => {
     const [password, setPassword] = useState('');
 
 
-    const signUp = (event) => {
+    // const signUp = (event) => {
+
+    //     event.preventDefault();
+
+    //     createUserWithEmailAndPassword(auth, email, password)
+    //         .then((userCredential) => {
+    //             // Signed in
+    //             const user = userCredential.user;
+
+    //             alert(`Bienvenido, ${userCredential.user.email}`);
+    //             console.log(user);
+    //             // ...
+    //         })
+    //         .catch((error) => {
+    //             const errorCode = error.code;
+    //             const errorMessage = error.message;
+    //             console.log(errorCode);
+    //             console.log(errorMessage);
+    //             // ..
+    //         });
+
+
+    //     auth.createUserWithEmailAndPassword(email, password)
+            
+    //         .catch((error) => alert(error.message));
+    // }
+
+    const signUp = (path, event) =>{
 
         event.preventDefault();
 
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed in
-                const user = userCredential.user;
-
-                alert(`Bienvenido, ${userCredential.user.email}`);
-                console.log(user);
-                // ...
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode);
-                console.log(errorMessage);
-                // ..
-            });
-
-
-        auth.createUserWithEmailAndPassword(email, password)
-            
-            .catch((error) => alert(error.message));
+        this.props.history.push(path);
     }
 
     return <>
@@ -69,7 +76,10 @@ const Register = () => {
                             onChange={(p) => setPassword(p.target.value)}
                         />
 
-                        <button className="form-btn" type="submit" onClick={signUp}>
+                        <button className="form-btn" type="submit" 
+                        //onClick={signUp}
+                        onClick={() => this.signUp('/feed')}
+                        >
                             Registrar usuario
                         </button>
 

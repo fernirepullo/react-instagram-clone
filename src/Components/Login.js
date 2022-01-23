@@ -16,8 +16,6 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [user, setUser] = useState(null); 
 
-    
-    
     const login = (event) =>{
 
         event.preventDefault();
