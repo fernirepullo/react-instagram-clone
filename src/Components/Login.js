@@ -63,6 +63,8 @@ const Login = () => {
             // Signed in
 
             setUser(userCredential.user);
+            navigate('/feed');
+
             console.log(user);
             
         })
@@ -74,10 +76,6 @@ const Login = () => {
             console.log(errorCode);
             console.log(errorMessage);
         });
-
-        auth.signInWithEmailAndPassword(email, password)
-            .then(navigate('/feed'))
-            .catch((error) => alert(error.message));
 
     }
 
