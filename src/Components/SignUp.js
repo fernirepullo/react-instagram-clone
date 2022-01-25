@@ -38,7 +38,6 @@ const Register = () => {
                 // ..
             });
 
-
         auth.createUserWithEmailAndPassword(email, password)
             .then(navigate('/login'))
             .catch((error) => alert(error.message));
@@ -75,7 +74,7 @@ const Register = () => {
                         <button
                         className="form-btn"
                         type="submit"
-                        onClick={signUp()}>
+                        onClick={signUp}>
 
                         Registrar usuario
                     </button>

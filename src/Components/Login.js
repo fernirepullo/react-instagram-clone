@@ -7,8 +7,9 @@ import { useNavigate } from 'react-router';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../Configuration/Firebase_Configuration";
 
+
 //REGISTRO CON GOOGLE
-//import { getAuth, signInWithPopup, getRedirectResult, GoogleAuthProvider } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
 
@@ -18,6 +19,40 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [user, setUser] = useState(null); 
+
+    //LOGIN CON GOOGLE
+    const loginGoogle = (event) =>{
+
+        event.preventDefault();
+
+        const provider = new GoogleAuthProvider();
+
+        signInWithPopup(auth, provider)
+            .then((result) =>{
+
+                const credenciales = GoogleAuthProvider.credentialFromResult(result);
+                const token = credenciales.accessToken;
+                const user = result.user;
+                console.log("Conectado con google");
+                navigate("/feed");
+            })
+
+            .catch((error) =>{
+
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                const correoUsuario = error.email;
+                const credencialUsuario = GoogleAuthProvider.credentialFromError(error);
+
+                console.log(errorCode);
+                console.log(errorMessage);
+                console.log(correoUsuario);
+                console.log(credencialUsuario);
+            })
+    }
+
+
+    //LOGIN CON CORREO Y CONTRASEÑA
 
     const login = (event) =>{
 
@@ -80,9 +115,9 @@ const Login = () => {
 
                         <span className="has-separator">O</span>
 
-                        <a href="#" className="facebook-login">
-                            <i className="fab fa-facebook" /> Iniciar sesi&oacute;n con Google
-                        </a>
+                        <button className="form-btn" type="submit" onClick={loginGoogle}>
+                            Iniciar Sesi&oacute;n con Google
+                        </button>
 
                         <a className="password-reset" href="#">
                             ¿Olvidó la contrase&ntilde;a?

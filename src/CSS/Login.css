@@ -122,21 +122,21 @@ body {
   }
   
   /*-- FACEBOOK --*/
-  .facebook-login {
+  .google-login {
     font-size: 1.4rem;
     font-weight: bold;
     color: #385185;
     margin-bottom: 2.5rem;
   }
   
-  .facebook-login {
+  .google-login {
     font-size: 1.4rem;
     font-weight: bold;
     color: #385185;
     margin-bottom: 2.5rem;
   }
   
-  .facebook-login i {
+  .google-login i {
     font-size: 2rem;
     margin-right: 0.7rem;
   }
